@@ -20,13 +20,20 @@
       const name = "Sugar Syntax";
       const handle = "@sugarsyntax";
 
-      const nameElement = React.createElement("h1", null, name);
+      function NameComponent(props) {
+        return React.createElement("h1", null, props.name);
+      }
+
+      function HandleComponent(props) {
+        return React.createElement("h3", null, props.handle);
+      }
+
       const handleElement = React.createElement("h3", null, handle);
       const wrapperElement = React.createElement(
         "div",
         { id: "container" },
-        nameElement,
-        handleElement
+        React.createElement(NameComponent, { name: "Sugar Syntax" }),
+        React.createElement(HandleComponent, { handle: "@sugarsyntax" })
       );
 
       ReactDOM.render(wrapperElement, document.getElementById("app"));
